@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / backup files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment 
+venv/
+.venv/
+env/
+
+# Output images 
+output_FINAL_*
+preview_*
+
+# Temporary files
+*.tmp
+tmp/
+temp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo

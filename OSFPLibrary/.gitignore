@@ -1,0 +1,14 @@
+# Byte-compiled / optimized / backup files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment (if you test it inside the repo)
+venv/
+.venv/
+
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg-info/
