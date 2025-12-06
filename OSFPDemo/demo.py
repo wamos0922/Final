@@ -32,7 +32,6 @@ def get_float_input(prompt: str, default_value: float) -> float:
         except ValueError:
             print(" Invalid input. Please enter a number.")
 
-
 def create_dummy_image(filename="images/sample_input.png"):
     os.makedirs("images", exist_ok=True)
     
@@ -42,7 +41,7 @@ def create_dummy_image(filename="images/sample_input.png"):
         img.save(filename)
         print(f" Created: {filename}")
 
-
+# Manual
 def run_manual_edit(img: Image.Image) -> Image.Image:
     print("\n" + "=" * 70)
     print(" " * 15 + "MANUAL EDIT MODE")
@@ -104,7 +103,7 @@ def run_manual_edit(img: Image.Image) -> Image.Image:
     
     return img
 
-
+# Interface
 def main():
     INPUT_FILE = "images/sample_input.png"
     

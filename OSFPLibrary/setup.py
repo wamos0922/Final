@@ -11,7 +11,6 @@ setup(
     description='Image preprocessing library with filters and templates',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url='https://github.com/wamos0922/OSFinalProjectLibrary',
     packages=find_packages(),
     classifiers=[
         'Development Status :: 4 - Beta',
