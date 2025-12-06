@@ -15,11 +15,8 @@ except ImportError as e:
     print("  ERROR: ossimg library is not installed!")
     print("=" * 70)
     print("\nPlease install the library first:")
-    print("\n  Method 1 - From GitHub (Recommended):")
-    print("  pip install git+https://github.com/wamos0922/OSFinalProjectLibrary.git")
-    print("\n  Method 2 - For Development:")
-    print("  git clone https://github.com/wamos0922/OSFinalProjectLibrary.git")
-    print("  cd OSFinalProjectLibrary")
+    print("  git clone https://github.com/wamos0922/OSFPLibrary.git")
+    print("  cd OSFPLibrary")
     print("  pip install -e .")
     print("\n" + "=" * 70)
     exit(1)
@@ -43,7 +40,7 @@ def create_dummy_image(filename="images/sample_input.png"):
         print(f"📷 Creating dummy image: {filename}")
         img = Image.new('RGB', (400, 300), color='#6A5ACD')
         img.save(filename)
-        print(f"✅ Created: {filename}")
+        print(f" Created: {filename}")
 
 
 def run_manual_edit(img: Image.Image) -> Image.Image:
@@ -54,42 +51,28 @@ def run_manual_edit(img: Image.Image) -> Image.Image:
     print("Press Enter to use default values.\n")
     
     # Collect all inputs first
-    print("-" * 70)
     print("[1/4] SATURATION")
-    print("  • 1.0 = original")
-    print("  • 0.0 = grayscale")
-    print("  • >1.0 = more vibrant")
-    print("-" * 70)
+    print("   1.0 = original, 0.0 = grayscale, >1.0 = more vibrant ")
     saturation_factor = get_float_input("Enter Saturation Factor", 1.0)
     
     print("\n" + "-" * 70)
     print("[2/4] SHADOWS")
-    print("  • 0.0 = neutral")
-    print("  • Positive = lift shadows (brighter)")
-    print("  • Negative = crush shadows (darker)")
-    print("-" * 70)
+    print("   0.0 = neutral, Positive = lift shadows (brighter), Negative = crush shadows (darker)")
     shadows_amount = get_float_input("Enter Shadows Amount", 0.0)
     
     print("\n" + "-" * 70)
     print("[3/4] BRIGHTNESS")
-    print("  • 1.0 = original")
-    print("  • >1.0 = brighter")
-    print("  • <1.0 = darker")
+    print("   1.0 = original, >1.0 = brighter, <1.0 = darker")
     print("-" * 70)
     brightness_factor = get_float_input("Enter Brightness Factor", 1.0)
     
     print("\n" + "-" * 70)
     print("[4/4] SHARPNESS")
-    print("  • 1.0 = original")
-    print("  • >1.0 = sharper")
-    print("  • <1.0 = blurrier")
-    print("-" * 70)
+    print("   1.0 = original, >1.0 = sharper, <1.0 = blurrier")
     sharpness_factor = get_float_input("Enter Sharpness Factor", 1.0)
     
-    # Ensure output directory exists
     os.makedirs("outputs", exist_ok=True)
     
-    # Apply edits step-by-step
     print("\n" + "=" * 70)
     print("Applying Edits Step-by-Step...")
     print("=" * 70)
@@ -108,7 +91,7 @@ def run_manual_edit(img: Image.Image) -> Image.Image:
     for feature_name, current_img in edit_sequence:
         preview_name = f"outputs/preview_{step_count:02d}_{feature_name}.png"
         current_img.save(preview_name)
-        print(f"  📸 Step {step_count}: {feature_name.upper():12} → {preview_name}")
+        print(f"   Step {step_count}: {feature_name.upper():12} → {preview_name}")
         final_img = current_img
         step_count += 1
     
@@ -116,7 +99,7 @@ def run_manual_edit(img: Image.Image) -> Image.Image:
     if final_img:
         final_name = "outputs/output_FINAL_MANUAL_EDIT.png"
         final_img.save(final_name)
-        print(f"\n🎉 Final combined result: {final_name}")
+        print(f"\n Final combined result: {final_name}")
         return final_img
     
     return img
@@ -134,7 +117,7 @@ def main():
     
     # Check if input exists
     if not os.path.exists(INPUT_FILE):
-        print(f"❌ Error: Input file '{INPUT_FILE}' is missing.")
+        print(f" Error: Input file '{INPUT_FILE}' is missing.")
         print("Please place an image at 'images/sample_input.png'")
         return
     
@@ -148,13 +131,9 @@ def main():
         print("=" * 70)
         print("\nChoose an option:\n")
         print("  1: Apply 'Golden Hour' Template")
-        print("     └─ Warm, soft aesthetic with lifted shadows\n")
         print("  2: Apply 'Gritty Contrast' Template")
-        print("     └─ Urban, high-contrast look with deep shadows\n")
         print("  3: Apply 'Pastel Matte' Template")
-        print("     └─ Soft, faded, dreamy appearance\n")
         print("  4: Manual Edit Mode")
-        print("     └─ Customize all 4 parameters yourself\n")
         print("=" * 70)
         
         choice = input("Enter your choice (1-4): ").strip()
